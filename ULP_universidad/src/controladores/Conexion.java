@@ -1,46 +1,49 @@
 package controladores;
 
-
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author alejo
+ */
 public class Conexion {
+    private static String url="jdbc:mysql://localhost/universidad_ulp(1)";
+    private static String usuario="root";
+    private static String password="";
 
-    private String url;
-    private String user;
-    private String password;
+   
+    private static Conexion conexion=null;
     
-    private Connection conexion;
-    
-    public Conexion(String url, String user, String password) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
-    }
-
-    public Conexion() {
-    }
-    
-    
-    public Connection bucarConexion() {
-        //si es la primera vez, hay que establecerla
-        if (conexion == null) { 
-            
-            try {
+     private Conexion() {
+        try {
             Class.forName("org.mariadb.jdbc.Driver");
-            conexion = (Connection) DriverManager.getConnection(url, user, password);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Clase Conexion: Error al cargar Driver");
+        }
+    }
+
+
+    
+    public static Connection getConexion() {
+        Connection con=null;
+      if(conexion == null){
+          
+           conexion= new Conexion();
+        }
+        try {
+            // Setup the connection with the DB
+            con = DriverManager.getConnection(url + "?useLegacyDatetimeCode=false&serverTimezone=UTC" + "&user=" + usuario + "&password=" + password);
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return conexion; //retorna la conexión establecida
-        
-    }
-    
+        return con;
+}
 }

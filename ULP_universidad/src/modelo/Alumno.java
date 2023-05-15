@@ -79,4 +79,9 @@ public class Alumno {
         this.dni = dni;
     }
 
+    @Override
+    public String toString() {
+        return "Alumno{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fecha_nacimiento=" + fecha_nacimiento + ", estado=" + estado + '}';
+    }
+
 }
