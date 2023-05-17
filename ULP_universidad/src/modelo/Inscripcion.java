@@ -1,34 +1,34 @@
 
 package modelo;
 
-public class Incripcion {
-  private int id_incripto;
+public class Inscripcion {
+  private int id_inscripto;
   private double nota;
   private Alumno alumno;
   private Materia materia;
 
-    public Incripcion() {
+    public Inscripcion() {
     }
 
-    public Incripcion(int id_incripto, double nota, Alumno alumno, Materia materia) {
-        this.id_incripto = id_incripto;
+    public Inscripcion(int id_inscripto, double nota, Alumno alumno, Materia materia) {
+        this.id_inscripto = id_inscripto;
         this.nota = nota;
         this.alumno = alumno;
         this.materia = materia;
     }
 
-    public Incripcion(double nota, Alumno alumno, Materia materia) {
+    public Inscripcion(double nota, Alumno alumno, Materia materia) {
         this.nota = nota;
         this.alumno = alumno;
         this.materia = materia;
     }
 
-    public int getId_incripto() {
-        return id_incripto;
+    public int getId_inscripto() {
+        return id_inscripto;
     }
 
-    public void setId_incripto(int id_incripto) {
-        this.id_incripto = id_incripto;
+    public void setId_inscripto(int id_inscripto) {
+        this.id_inscripto = id_inscripto;
     }
 
     public double getNota() {
@@ -57,7 +57,7 @@ public class Incripcion {
 
     @Override
     public String toString() {
-        return "Incripcion{" + "id_incripto=" + id_incripto + ", nota=" + nota + ", alumno=" + alumno + ", materia=" + materia + '}';
+        return "Inscripcion{" + "id_inscripto=" + id_inscripto + ", nota=" + nota + ", alumno=" + alumno + ", materia=" + materia + '}';
     }
  
   
