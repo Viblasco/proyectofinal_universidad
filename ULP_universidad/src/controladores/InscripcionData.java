@@ -6,12 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Alumno;
 import modelo.Inscripcion;
+import modelo.Materia;
 
 public class InscripcionData {
     private Connection con;
+    private MateriaData matData;
+    private AlumnoData aluData;
 
     public InscripcionData() {
         con = Conexion.getConexion();
@@ -36,6 +42,34 @@ public class InscripcionData {
         } catch (SQLException ex) {
             Logger.getLogger(InscripcionData.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public List<Inscripcion> obtenerInscripciones(){
+        List<Inscripcion> listaInscriptos = new ArrayList<>();
+        String sql = "SELECT * FROM inscripcion";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                   Inscripcion i = new Inscripcion();
+                   i.setId_inscripto(rs.getInt("id_inscripto"));
+                   Alumno a = aluData.buscarAlumno(rs.getInt("id_alumno"));
+                   i.setAlumno(a);
+                   Materia m = matData.buscarMateria(rs.getInt("id_materia"));
+                   i.setMateria(m);
+                   i.setNota(rs.getDouble("nota"));
+                   listaInscriptos.add(i);
+        }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(InscripcionData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (listaInscriptos.isEmpty()) {
+            System.out.println("La base de datos se encuentra vacia");
+        }
+        return listaInscriptos;
+        
     }
     
 }

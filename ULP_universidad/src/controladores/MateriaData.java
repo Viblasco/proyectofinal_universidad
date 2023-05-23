@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Materia;
@@ -75,5 +77,44 @@ public class MateriaData {
         return mat;
     }
     
+    public List<Materia> listarMaterias(){
+        List<Materia> lista = new ArrayList<>();
+        Materia mat;
+        String sql ="SELECT * FROM materia";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                mat = new Materia();
+                mat.setId_materia(rs.getInt("id_materia"));
+                mat.setNombre(rs.getString("nombre"));
+                mat.setAnio(rs.getInt("anio"));
+                mat.setEstado(rs.getBoolean("estado"));
+                lista.add(mat);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener las materias: " + ex.getMessage());
+        }
+        if (lista.isEmpty()) {
+            System.out.println("La base de datos se encuentra vacia");
+        }
+        return lista;
+    }
+    
+    public void eliminarMateria(int id){
+        String sql = "UPDATE materia SET estado = false WHERE id_materia = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            if ((ps.executeUpdate() == 1)) {
+                System.out.println("Materia borrada correctamente.");
+            } else {
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al borrar la materia con id_materia: " + id + ". Error: " + ex.getMessage());
+        }
+    }
     
 }
