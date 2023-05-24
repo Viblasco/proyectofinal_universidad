@@ -87,7 +87,7 @@ public class InscripcionData {
                 
                 Materia m=matData.buscarMateria(rs.getInt("id_materia"));
                 cursada.setMateria(m);
-                cursada.setNota(rs.getInt("nota"));
+                cursada.setNota(rs.getDouble("nota"));
                 lista.add(cursada);
             }
             ps.close();
