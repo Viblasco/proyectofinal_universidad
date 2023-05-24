@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2023 a las 17:51:13
+-- Tiempo de generación: 24-05-2023 a las 16:40:25
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `universidad_ulp`
+-- Base de datos: `universidad_grupo2`
 --
 
 -- --------------------------------------------------------
@@ -53,7 +53,7 @@ INSERT INTO `alumno` (`id_alumno`, `dni`, `nombre`, `apellido`, `f_nacimiento`, 
 
 CREATE TABLE `inscripcion` (
   `id_inscripto` int(11) NOT NULL,
-  `nota` int(11) NOT NULL,
+  `nota` double NOT NULL,
   `id_alumno` int(11) NOT NULL,
   `id_materia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
