@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.Materia;
 
 public class MateriaData {
@@ -30,27 +31,28 @@ public class MateriaData {
            ResultSet rs= ps.getGeneratedKeys();
            if (rs.next()){
                materia.setId_materia(rs.getInt(1));
+               JOptionPane.showMessageDialog(null,"La materia guardada exitosamente");
            } else {
-               System.out.println("La materia no se pudo guardar");
+               JOptionPane.showMessageDialog(null,"La materia no se pudo guardar");
            }
            ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"La materia no se pudo guardar");
         }
     }
     
     public void actualizarMateria(Materia materia){
-        String sql = "UPDATE materia SET nombre=?,anio=?,estado=? WHERE id_materia=?";
+        String sql = "UPDATE materia SET nombre=?,anio=? WHERE id_materia=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,materia.getNombre());
             ps.setInt(2, materia.getAnio());
-            ps.setBoolean(3, materia.isEstado());
             ps.setInt(4, materia.getId_materia());
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Materia actualizada");
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"La materia no se pudo actualizar");
         }
     }
     
@@ -68,10 +70,10 @@ public class MateriaData {
                 mat.setAnio(rs.getInt("anio"));
                 mat.setEstado(rs.getBoolean("estado"));
             } else {
-                System.out.println("Materia inexistente");
+                JOptionPane.showMessageDialog(null,"Materia inexistente");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null,"Materia inexistente");
         }
         
         return mat;

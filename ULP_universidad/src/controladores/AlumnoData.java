@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.Alumno;
 
 
@@ -36,11 +37,11 @@ public class AlumnoData {
            if (rs.next()){
                alumno.setId(rs.getInt(1));
            } else {
-               System.out.println("El alumno no se pudo guardar");
+               JOptionPane.showMessageDialog(null, "No se pudo guardar el alumno");
            }
            ps.close();
        } catch (SQLException ex) {
-           Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, "No se pudo guardar el alumno");
        }
     }
     
