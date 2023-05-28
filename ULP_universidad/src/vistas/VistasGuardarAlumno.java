@@ -6,6 +6,8 @@ package vistas;
 
 import controladores.AlumnoData;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Alumno;
 
@@ -31,6 +33,7 @@ public class VistasGuardarAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jNombre = new javax.swing.JTextField();
@@ -41,6 +44,7 @@ public class VistasGuardarAlumno extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jGuardar = new javax.swing.JButton();
         jSalir = new javax.swing.JButton();
+        jDCFecha = new com.toedter.calendar.JDateChooser();
 
         jLabel1.setText("Guardar Alumno");
 
@@ -85,12 +89,14 @@ public class VistasGuardarAlumno extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jDCFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSalir)
-                        .addComponent(jDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(104, 104, 104))
+                        .addComponent(jDNI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)))
+                .addGap(115, 115, 115))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -102,7 +108,7 @@ public class VistasGuardarAlumno extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(jGuardar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +131,10 @@ public class VistasGuardarAlumno extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(jDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addComponent(jLabel5)
-                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jDCFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jGuardar)
                     .addComponent(jSalir))
@@ -151,9 +159,11 @@ public class VistasGuardarAlumno extends javax.swing.JInternalFrame {
         String nombre1 = jNombre.getText();
         String apellido1 = jApellido.getText();
         int dni1 = Integer.parseInt(jDNI.getText());
-        LocalDate fecnac1=null;
+        Date fecha=jDCFecha.getDate();
+        LocalDate fecnac1= LocalDate.parse((CharSequence) fecha);
+       
         //Agregar fecha de nacimiento
-        Alumno alumno = new Alumno(nombre1, apellido1, dni1,LocalDate.of(2000, 2, 20),true);
+        Alumno alumno = new Alumno(nombre1, apellido1, dni1,fecnac1,true);
         AlumnoData alumnoD = new AlumnoData();
         alumnoD.guardarAlumno(alumno);
         limpiar();
@@ -171,6 +181,8 @@ public class VistasGuardarAlumno extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jApellido;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDCFecha;
     private javax.swing.JTextField jDNI;
     private javax.swing.JButton jGuardar;
     private javax.swing.JLabel jLabel1;

@@ -50,6 +50,8 @@ public class VistasEditarMateria extends javax.swing.JInternalFrame {
 
         jButton1.setText("jButton1");
 
+        setBackground(new java.awt.Color(0, 102, 102));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Buscar Materia");
 
