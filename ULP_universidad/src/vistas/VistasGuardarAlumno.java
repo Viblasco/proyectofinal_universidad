@@ -6,6 +6,7 @@ package vistas;
 
 import controladores.AlumnoData;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -160,12 +161,13 @@ public class VistasGuardarAlumno extends javax.swing.JInternalFrame {
         String apellido1 = jApellido.getText();
         int dni1 = Integer.parseInt(jDNI.getText());
         Date fecha=jDCFecha.getDate();
-        LocalDate fecnac1= LocalDate.parse((CharSequence) fecha);
+        LocalDate fecnac1= fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        //LocalDate fecnac1= LocalDate.parse((CharSequence) fecha);
        
         //Agregar fecha de nacimiento
-        Alumno alumno = new Alumno(nombre1, apellido1, dni1,fecnac1,true);
+        Alumno alumno1 = new Alumno(nombre1, apellido1, dni1,fecnac1,true);
         AlumnoData alumnoD = new AlumnoData();
-        alumnoD.guardarAlumno(alumno);
+        alumnoD.guardarAlumno(alumno1);
         limpiar();
         JOptionPane.showMessageDialog(this, "Se guardo exitosamente al alumno");
         
