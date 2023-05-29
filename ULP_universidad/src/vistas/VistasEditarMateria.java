@@ -204,14 +204,14 @@ public class VistasEditarMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarActionPerformed
-        // TODO add your handling code here:
-//       if(Integer.parseInt(jIdMateria.getText())!= id){
-//            JOptionPane.showMessageDialog(null,"La materia no se pudo actualizar: No se puede modificar el id");
-//        } else {
+//         TODO add your handling code here:
+       if(Integer.parseInt(jIdMateria.getText())!= id){
+            JOptionPane.showMessageDialog(null,"La materia no se pudo actualizar: No se puede modificar el id");
+        } else {
             materia.setNombre(jNombre.getText());
             materia.setAnio(Integer.parseInt(jAnio.getText()));
             materiaD.actualizarMateria(materia);
-//       }
+       }
         
     }//GEN-LAST:event_jActualizarActionPerformed
 

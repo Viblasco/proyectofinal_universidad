@@ -42,11 +42,12 @@ public class MateriaData {
     }
     
     public void actualizarMateria(Materia materia){
-        String sql = "UPDATE materia SET nombre=?,anio=? WHERE id_materia=?";
+        String sql = "UPDATE materia SET nombre=?,anio=?,estado=? WHERE id_materia=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,materia.getNombre());
             ps.setInt(2, materia.getAnio());
+            ps.setBoolean(3, materia.isEstado());
             ps.setInt(4, materia.getId_materia());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null,"Materia actualizada");
