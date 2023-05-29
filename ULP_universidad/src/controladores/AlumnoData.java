@@ -57,9 +57,9 @@ public class AlumnoData {
            ps.setInt(6, alumno.getId());
            ps.executeUpdate();
            ps.close();
-           
+           JOptionPane.showMessageDialog(null,"Alumno actualizado correctamente");
        } catch (SQLException ex) {
-           Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null,"Error al actualizar alumno");
        }
     }
     
@@ -80,10 +80,10 @@ public class AlumnoData {
                alu.setFecha_nacimiento(rs.getDate("f_nacimiento").toLocalDate());
                alu.setEstado(rs.getBoolean("estado"));
            } else {
-               System.out.println("Alumno inexistente");
+               JOptionPane.showMessageDialog(null, "Alumno inexistente");
            }
        } catch (SQLException ex) {
-           Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, "No se pudo buscar el alumno");
        }
        return alu;
     }
@@ -105,10 +105,10 @@ public class AlumnoData {
                alu.setFecha_nacimiento(rs.getDate("f_nacimiento").toLocalDate());
                alu.setEstado(rs.getBoolean("estado"));
            } else {
-               System.out.println("Alumno inexistente");
+               JOptionPane.showMessageDialog(null, "Alumno inexistente");
            }
        } catch (SQLException ex) {
-           Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, "No se pudo buscar el alumno");
        }
        return alu;
     }
@@ -131,10 +131,10 @@ public class AlumnoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al obtener los alumnos: " + ex.getMessage());
         }
         if (lista.isEmpty()) {
-            System.out.println("La base de datos se encuentra vacia");
+            JOptionPane.showMessageDialog(null, "La base de datos se encuentra vacía");
         }
         return lista;
     }
@@ -147,11 +147,11 @@ public class AlumnoData {
             if ((ps.executeUpdate() == 1)) {
                 System.out.println("Alumno borrado correctamente.");
             } else {
-                System.out.println("Error al borrar el alumno con id_alumno: " + id);
+                JOptionPane.showMessageDialog(null, "Error al borrar alumno");
             }
             ps.close();
         } catch (SQLException ex) {
-            System.out.println("Error al borrar el alumno con id_alumno: " + id + ". Error: " + ex.getMessage());
+           JOptionPane.showMessageDialog(null,"Error al borrar el alumno con id_alumno: " + id + ". Error: " + ex.getMessage());
         }
     }
 }

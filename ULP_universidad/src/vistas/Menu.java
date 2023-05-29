@@ -31,6 +31,7 @@ public class Menu extends javax.swing.JFrame {
         jListarMateria = new javax.swing.JMenuItem();
         jMenu25 = new javax.swing.JMenu();
         jGuardarAlumno = new javax.swing.JMenuItem();
+        jEditarAlumno = new javax.swing.JMenuItem();
         jMenu31 = new javax.swing.JMenu();
         jInscripciones = new javax.swing.JMenu();
         jMenu27 = new javax.swing.JMenu();
@@ -118,6 +119,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu25.add(jGuardarAlumno);
 
+        jEditarAlumno.setText("Editar Alumno");
+        jEditarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEditarAlumnoActionPerformed(evt);
+            }
+        });
+        jMenu25.add(jEditarAlumno);
+
         jMenuBar2.add(jMenu25);
 
         jMenu31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cuestionario.png"))); // NOI18N
@@ -192,6 +201,15 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(vga);
     }//GEN-LAST:event_jGuardarAlumnoActionPerformed
 
+    private void jEditarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditarAlumnoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistasEditarAlumno vea = new VistasEditarAlumno();
+        vea.setVisible(true);
+        escritorio.add(vea);
+    }//GEN-LAST:event_jEditarAlumnoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,6 +248,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jConsultas;
+    private javax.swing.JMenuItem jEditarAlumno;
     private javax.swing.JMenuItem jEditarMateria;
     private javax.swing.JMenuItem jGuardarAlumno;
     private javax.swing.JMenuItem jGuardarMateria;
