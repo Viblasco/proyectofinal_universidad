@@ -8,6 +8,7 @@ import controladores.AlumnoData;
 import controladores.InscripcionData;
 import controladores.MateriaData;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Alumno;
 import modelo.Inscripcion;
@@ -236,6 +237,8 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
     private void cBAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBAlumnosActionPerformed
         jInscriptos.setSelected(false);
         jNoInscriptas.setSelected(false);
+        jInscribir.setEnabled(false);
+        jAnular.setEnabled(false);
         borrarFilas();
     }//GEN-LAST:event_cBAlumnosActionPerformed
 
@@ -247,11 +250,30 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jNoInscriptasActionPerformed
 
     private void jInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInscribirActionPerformed
-
+        int filaSeleccionada = jTablaMaterias.getSelectedRow();
+        if (filaSeleccionada != -1){
+            Alumno seleccionado =(Alumno)cBAlumnos.getSelectedItem();
+            int idMateria = (Integer)modeloTabla.getValueAt(filaSeleccionada, 0);
+            String nombre1 = (String)modeloTabla.getValueAt(filaSeleccionada, 1);
+            int anio1 = (Integer)modeloTabla.getValueAt(filaSeleccionada, 2);
+            Materia mat = new Materia(idMateria,nombre1,anio1,true);
+            Inscripcion insc = new Inscripcion(0,seleccionado,mat); 
+            inscripcionD.guardarInscripcion(insc);
+        } else {
+            JOptionPane.showMessageDialog(null,"Debe seleccionar una materia");
+        }
+        
     }//GEN-LAST:event_jInscribirActionPerformed
 
     private void jAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAnularActionPerformed
-        
+        int filaSeleccionada = jTablaMaterias.getSelectedRow();
+        if (filaSeleccionada != -1){
+            Alumno seleccionado =(Alumno)cBAlumnos.getSelectedItem();
+            int idMateria = (Integer)modeloTabla.getValueAt(filaSeleccionada, 0);
+            inscripcionD.borrarInscripcionMateriaAlumno(seleccionado.getId(), idMateria);
+        } else {
+            JOptionPane.showMessageDialog(null,"Debe seleccionar una materia");
+        }
         
 
     }//GEN-LAST:event_jAnularActionPerformed

@@ -165,15 +165,15 @@ public class InscripcionData {
             ps.setInt(1, id_alumno);
             ps.setInt(2, id_materia);
             if (ps.executeUpdate() == 1) {
-                JOptionPane.showMessageDialog(null,"La nota del alumno ha sido borrada correctamente" );
+                JOptionPane.showMessageDialog(null,"Se ha anulado la inscripción" );
                 
             } else {
-                JOptionPane.showMessageDialog(null,"La nota del alumno no ha sido borrada." );
+                JOptionPane.showMessageDialog(null,"No se pudo anular la inscripción");
                 
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al borrar la nota del alumno: ");
+            JOptionPane.showMessageDialog(null,"Error al anular la inscripción");
             
         }
     }
