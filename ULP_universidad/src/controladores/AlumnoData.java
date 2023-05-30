@@ -113,8 +113,8 @@ public class AlumnoData {
        return alu;
     }
     
-    public List<Alumno> listarAlumnos(){
-        List<Alumno> lista = new ArrayList<>();
+    public ArrayList<Alumno> listarAlumnos(){
+        ArrayList<Alumno> lista = new ArrayList<>();
         Alumno alu;
         String sql ="SELECT * FROM alumno";
         try {
@@ -125,7 +125,7 @@ public class AlumnoData {
                 alu.setId(rs.getInt("id_alumno"));
                 alu.setNombre(rs.getString("nombre"));
                 alu.setApellido(rs.getString("apellido"));
-                alu.setFecha_nacimiento(rs.getDate("fecha_nac").toLocalDate());
+                alu.setFecha_nacimiento(rs.getDate("f_nacimiento").toLocalDate());
                 alu.setEstado(rs.getBoolean("estado"));
                 lista.add(alu);
             }

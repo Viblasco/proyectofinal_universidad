@@ -80,8 +80,8 @@ public class MateriaData {
         return mat;
     }
     
-    public List<Materia> listarMaterias(){
-        List<Materia> lista = new ArrayList<>();
+    public ArrayList<Materia> listarMaterias(){
+        ArrayList<Materia> lista = new ArrayList<>();
         Materia mat;
         String sql ="SELECT * FROM materia";
         try {

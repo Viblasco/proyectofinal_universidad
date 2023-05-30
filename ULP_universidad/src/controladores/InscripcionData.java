@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.Alumno;
 import modelo.Inscripcion;
 import modelo.Materia;
@@ -23,7 +24,7 @@ public class InscripcionData {
         con = Conexion.getConexion();
     }
     
-    public void guardarInscripcion (Inscripcion inscripcion){
+    public void guardarInscripcion(Inscripcion inscripcion){
         String sql = "INSERT INTO inscripcion(nota, id_alumno, id_materia) VALUES (?,?,?);";
         try {
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -34,9 +35,9 @@ public class InscripcionData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 inscripcion.setId_inscripto(rs.getInt(1));
-                System.out.println("Se ha inscripto correctamente el alumno");
+                JOptionPane.showMessageDialog(null,"Se ha inscripto correctamente el alumno");
             } else {
-                System.out.println("No se ha inscripto al alumno");
+                JOptionPane.showMessageDialog(null,"No se ha inscripto al alumno");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -44,8 +45,8 @@ public class InscripcionData {
         }
     }
     
-    public List<Inscripcion> obtenerInscripciones(){
-        List<Inscripcion> listaInscriptos = new ArrayList<>();
+    public ArrayList<Inscripcion> obtenerInscripciones(){
+        ArrayList<Inscripcion> listaInscriptos = new ArrayList<>();
         String sql = "SELECT * FROM inscripcion";
         PreparedStatement ps;
         try {
@@ -66,13 +67,13 @@ public class InscripcionData {
             Logger.getLogger(InscripcionData.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (listaInscriptos.isEmpty()) {
-            System.out.println("La base de datos se encuentra vacia");
+            JOptionPane.showMessageDialog(null,"La base de datos se encuentra vacia");
         }
         return listaInscriptos;
         
     }
-    public List<Inscripcion> obtenerInscripcionXAlumno(int id_alumno) {
-        List<Inscripcion> lista = new ArrayList<>();
+    public ArrayList<Inscripcion> obtenerInscripcionXAlumno(int id_alumno) {
+        ArrayList<Inscripcion> lista = new ArrayList<>();
         Inscripcion cursada;
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM inscripcion WHERE id_alumno = ?", Statement.RETURN_GENERATED_KEYS);
@@ -93,20 +94,20 @@ public class InscripcionData {
             ps.close();
         } catch (SQLException ex) 
         {            
-             System.out.println("Error al buscar al alumno con la id ingresada: ");            
+             JOptionPane.showMessageDialog(null,"Error al buscar al alumno con la id ingresada: ");            
         }
         if (lista.isEmpty()) 
         {
-            System.out.println("La base de datos se encuentra vacia");      
+            JOptionPane.showMessageDialog(null,"La base de datos se encuentra vacia");      
         }
         return lista;
     }
     
-    public List<Materia> obtenerMateriasCursadas(int id_alumno) {
-        List<Materia> lista = new ArrayList<>();
+    public ArrayList<Materia> obtenerMateriasCursadas(int id_alumno) {
+        ArrayList<Materia> lista = new ArrayList<>();
         Materia m;
         try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM inscripcion, materia WHERE incripcion.id_materia = materia.id_materia and inscripcion.id_alumno = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM inscripcion, materia WHERE inscripcion.id_materia = materia.id_materia and inscripcion.id_alumno = ?");
                    
             ps.setInt(1, id_alumno);
             ResultSet rs = ps.executeQuery();
@@ -121,17 +122,17 @@ public class InscripcionData {
             ps.close();
         } catch (SQLException ex) {
             
-            System.out.println("Error al buscar al alumno con la id ingresada: " );
+            JOptionPane.showMessageDialog(null,"Error al buscar al alumno con la id ingresada: " );
             
         }
         if (lista.isEmpty()) {
-           System.out.println("La base de datos se encuentra vacia");
+           JOptionPane.showMessageDialog(null,"La base de datos se encuentra vacia");
            
         }
         return lista;
     }
-    public List<Materia> obtenerMateriasNOCursadas(int id_materia) {
-        List<Materia> noCursada = new ArrayList<>();
+    public ArrayList<Materia> obtenerMateriasNOCursadas(int id_materia) {
+        ArrayList<Materia> noCursada = new ArrayList<>();
         Materia m;
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM materia WHERE id_materia NOT IN(SELECT materia.id_materia FROM materia, inscripcion WHERE materia.id_materia = inscripcion.id_materia AND inscripcion.id_alumno = ?);");
@@ -140,19 +141,19 @@ public class InscripcionData {
             while (rs.next()) {
                 m = new Materia();
                 m.setId_materia(rs.getInt("id_materia"));
-                m.setNombre(rs.getString("nombre_materia"));
-                m.setAnio(rs.getInt("año"));
+                m.setNombre(rs.getString("nombre"));
+                m.setAnio(rs.getInt("anio"));
                 m.setEstado(rs.getBoolean("estado"));
                 noCursada.add(m);
             }
             ps.close();
         } catch (SQLException ex) {
-            System.out.println("Error al consultar la tabla: " );
+            JOptionPane.showMessageDialog(null,"Error al consultar la tabla: " );
             
         }
         if (noCursada.isEmpty()) {
             
-             System.out.println("La lista esta vacia." );
+             JOptionPane.showMessageDialog(null,"La lista esta vacia." );
             
         }
         return noCursada;
@@ -164,15 +165,15 @@ public class InscripcionData {
             ps.setInt(1, id_alumno);
             ps.setInt(2, id_materia);
             if (ps.executeUpdate() == 1) {
-                System.out.println("La nota del alumno ha sido borrada correctamente" );
+                JOptionPane.showMessageDialog(null,"La nota del alumno ha sido borrada correctamente" );
                 
             } else {
-                System.out.println("La nota del alumno no ha sido borrada." );
+                JOptionPane.showMessageDialog(null,"La nota del alumno no ha sido borrada." );
                 
             }
             ps.close();
         } catch (SQLException ex) {
-            System.out.println("Error al borrar la nota del alumno: ");
+            JOptionPane.showMessageDialog(null,"Error al borrar la nota del alumno: ");
             
         }
     }
@@ -184,15 +185,15 @@ public class InscripcionData {
             ps.setInt(2, id_alumno);
             ps.setInt(3, id_materia);
             if (ps.executeUpdate() == 1) {
-                System.out.println("La nota del alumno ha sido actualizada correctamente.");
+                JOptionPane.showMessageDialog(null,"La nota del alumno ha sido actualizada correctamente.");
                 
             } else {
-                System.out.println("La nota del alumno ha podido ser actualizada correctamente.");
+                JOptionPane.showMessageDialog(null,"La nota del alumno ha podido ser actualizada correctamente.");
                 
             }
             ps.close();
         } catch (SQLException ex) {
-            System.out.println("Error al actualizar la nota de un alumno: ");
+            JOptionPane.showMessageDialog(null,"Error al actualizar la nota de un alumno: ");
           
         }
     }

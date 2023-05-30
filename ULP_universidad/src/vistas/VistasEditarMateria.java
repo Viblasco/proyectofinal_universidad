@@ -13,8 +13,8 @@ import modelo.Materia;
  * @author giuli
  */
 public class VistasEditarMateria extends javax.swing.JInternalFrame {
-    MateriaData materiaD = new MateriaData();
-    Materia materia = new Materia();
+    private MateriaData materiaD = new MateriaData();;
+    private Materia materia = new Materia();
     int id;
     /**
      * Creates new form VistasActualizarMateria
@@ -54,7 +54,7 @@ public class VistasEditarMateria extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Buscar Materia");
 
-        jLabel2.setText("Ingrese el id de la materia:");
+        jLabel2.setText("Código:");
 
         jLabel3.setText("Nombre:");
 
@@ -108,16 +108,16 @@ public class VistasEditarMateria extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jLabel2))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(100, 100, 100)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel3)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(63, 63, 63)
-                                        .addComponent(jActualizar)))
+                                        .addComponent(jActualizar))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel2)))
                                 .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -137,7 +137,7 @@ public class VistasEditarMateria extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(113, 113, 113)))
-                        .addGap(0, 73, Short.MAX_VALUE))
+                        .addGap(0, 91, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSalir)))

@@ -32,8 +32,9 @@ public class Menu extends javax.swing.JFrame {
         jMenu25 = new javax.swing.JMenu();
         jGuardarAlumno = new javax.swing.JMenuItem();
         jEditarAlumno = new javax.swing.JMenuItem();
+        jListaAlumnos = new javax.swing.JMenuItem();
         jMenu31 = new javax.swing.JMenu();
-        jInscripciones = new javax.swing.JMenu();
+        jFormulario = new javax.swing.JMenuItem();
         jMenu27 = new javax.swing.JMenu();
         jNotas = new javax.swing.JMenu();
         jMenu29 = new javax.swing.JMenu();
@@ -104,6 +105,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu23.add(jEditarMateria);
 
         jListarMateria.setText("Listar Materias");
+        jListarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jListarMateriaActionPerformed(evt);
+            }
+        });
         jMenu23.add(jListarMateria);
 
         jMenuBar2.add(jMenu23);
@@ -127,13 +133,26 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu25.add(jEditarAlumno);
 
+        jListaAlumnos.setText("Listar Alumnos");
+        jListaAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jListaAlumnosActionPerformed(evt);
+            }
+        });
+        jMenu25.add(jListaAlumnos);
+
         jMenuBar2.add(jMenu25);
 
         jMenu31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cuestionario.png"))); // NOI18N
         jMenu31.setText("Inscripciones");
 
-        jInscripciones.setText("Manejo de Inscripciones");
-        jMenu31.add(jInscripciones);
+        jFormulario.setText("Formulario");
+        jFormulario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormularioActionPerformed(evt);
+            }
+        });
+        jMenu31.add(jFormulario);
 
         jMenuBar2.add(jMenu31);
 
@@ -210,6 +229,33 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(vea);
     }//GEN-LAST:event_jEditarAlumnoActionPerformed
 
+    private void jListarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarMateriaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaListarMaterias vlm = new VistaListarMaterias();
+        vlm.setVisible(true);
+        escritorio.add(vlm);
+    }//GEN-LAST:event_jListarMateriaActionPerformed
+
+    private void jListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListaAlumnosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaListarAlumnos vla = new VistaListarAlumnos();
+        vla.setVisible(true);
+        escritorio.add(vla);
+    }//GEN-LAST:event_jListaAlumnosActionPerformed
+
+    private void jFormularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormularioActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistasInscripciones vi = new VistasInscripciones();
+        vi.setVisible(true);
+        escritorio.add(vi);
+    }//GEN-LAST:event_jFormularioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,9 +296,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jConsultas;
     private javax.swing.JMenuItem jEditarAlumno;
     private javax.swing.JMenuItem jEditarMateria;
+    private javax.swing.JMenuItem jFormulario;
     private javax.swing.JMenuItem jGuardarAlumno;
     private javax.swing.JMenuItem jGuardarMateria;
-    private javax.swing.JMenu jInscripciones;
+    private javax.swing.JMenuItem jListaAlumnos;
     private javax.swing.JMenuItem jListarMateria;
     private javax.swing.JMenu jMenu21;
     private javax.swing.JMenu jMenu23;
