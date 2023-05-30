@@ -240,6 +240,8 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cBAlumnosActionPerformed
 
     private void jNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNoInscriptasActionPerformed
+        jInscribir.setEnabled(true);
+        jAnular.setEnabled(false);
         jInscriptos.setSelected(false);
         llenarTabla();
     }//GEN-LAST:event_jNoInscriptasActionPerformed
@@ -257,6 +259,8 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
     private void jInscriptosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInscriptosActionPerformed
         // TODO add your handling code here:
         jNoInscriptas.setSelected(false);
+        jAnular.setEnabled(true);
+        jInscribir.setEnabled(false);
         llenarTabla();
     }//GEN-LAST:event_jInscriptosActionPerformed
 
