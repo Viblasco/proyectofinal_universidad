@@ -125,6 +125,7 @@ public class AlumnoData {
                 alu.setId(rs.getInt("id_alumno"));
                 alu.setNombre(rs.getString("nombre"));
                 alu.setApellido(rs.getString("apellido"));
+                alu.setDni(rs.getInt("dni"));
                 alu.setFecha_nacimiento(rs.getDate("f_nacimiento").toLocalDate());
                 alu.setEstado(rs.getBoolean("estado"));
                 lista.add(alu);
