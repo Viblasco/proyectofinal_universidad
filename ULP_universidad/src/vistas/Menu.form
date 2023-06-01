@@ -124,11 +124,14 @@
             <Property name="text" type="java.lang.String" value="Nota"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jNotas">
+            <MenuItem class="javax.swing.JMenuItem" name="jManejoNotas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Manejo de notas"/>
+                <Property name="text" type="java.lang.String" value="Manejo de Notas"/>
               </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jManejoNotasActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu29">

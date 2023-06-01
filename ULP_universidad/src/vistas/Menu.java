@@ -36,7 +36,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu31 = new javax.swing.JMenu();
         jFormulario = new javax.swing.JMenuItem();
         jMenu27 = new javax.swing.JMenu();
-        jNotas = new javax.swing.JMenu();
+        jManejoNotas = new javax.swing.JMenuItem();
         jMenu29 = new javax.swing.JMenu();
         jConsultas = new javax.swing.JMenu();
 
@@ -159,8 +159,13 @@ public class Menu extends javax.swing.JFrame {
         jMenu27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lista-de-verificacion.png"))); // NOI18N
         jMenu27.setText("Nota");
 
-        jNotas.setText("Manejo de notas");
-        jMenu27.add(jNotas);
+        jManejoNotas.setText("Manejo de Notas");
+        jManejoNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jManejoNotasActionPerformed(evt);
+            }
+        });
+        jMenu27.add(jManejoNotas);
 
         jMenuBar2.add(jMenu27);
 
@@ -256,6 +261,15 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(vi);
     }//GEN-LAST:event_jFormularioActionPerformed
 
+    private void jManejoNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jManejoNotasActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaCargarNota vcn = new VistaCargarNota();
+        vcn.setVisible(true);
+        escritorio.add(vcn);
+    }//GEN-LAST:event_jManejoNotasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,6 +315,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jGuardarMateria;
     private javax.swing.JMenuItem jListaAlumnos;
     private javax.swing.JMenuItem jListarMateria;
+    private javax.swing.JMenuItem jManejoNotas;
     private javax.swing.JMenu jMenu21;
     private javax.swing.JMenu jMenu23;
     private javax.swing.JMenu jMenu25;
@@ -309,7 +324,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu31;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenu jNotas;
     private javax.swing.JMenuItem jSalir;
     private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables

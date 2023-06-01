@@ -2,11 +2,13 @@
 package ulp_universidad;
 
 import controladores.AlumnoData;
+import controladores.InscripcionData;
 import controladores.MateriaData;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import modelo.Alumno;
+import modelo.Inscripcion;
 import modelo.Materia;
 
 public class ULP_universidad {
@@ -26,12 +28,19 @@ public class ULP_universidad {
        //an.guardarMateria(mat);
        //an.actualizarMateria(mat1);
 //        System.out.println("La materia es"+an.buscarMateria(5));
-       ArrayList<Alumno> alumnos = new ArrayList();
-       alumnos=ad.listarAlumnos();
-       for(Alumno a: alumnos){
-           System.out.println(a);
-       }
-        
+//       ArrayList<Alumno> alumnos = new ArrayList();
+//       alumnos=ad.listarAlumnos();
+//       for(Alumno a: alumnos){
+//           System.out.println(a);
+////       }
+//       ArrayList<Inscripcion> inscripcion = new ArrayList();
+         InscripcionData inscD = new InscripcionData();
+//       inscripcion = inscD.obtenerInscripcionXAlumno(2);
+//        for(Inscripcion i: inscripcion){
+//            System.out.println(i);
+//            
+//        }
+         inscD.actualizarNota(3, 1, 9);
     }
     
 }

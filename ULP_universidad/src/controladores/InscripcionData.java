@@ -74,6 +74,8 @@ public class InscripcionData {
     }
     public ArrayList<Inscripcion> obtenerInscripcionXAlumno(int id_alumno) {
         ArrayList<Inscripcion> lista = new ArrayList<>();
+        AlumnoData alumnoD = new AlumnoData();
+        MateriaData materiaD = new MateriaData();
         Inscripcion cursada;
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM inscripcion WHERE id_alumno = ?", Statement.RETURN_GENERATED_KEYS);
@@ -82,13 +84,14 @@ public class InscripcionData {
             while (rs.next()) {
                 cursada = new Inscripcion();
                 cursada.setId_inscripto(rs.getInt("id_inscripto"));
+                cursada.setNota(rs.getDouble("nota"));
                 
-                Alumno a=aluData.buscarAlumno(rs.getInt("id_alumno"));
+                Alumno a=alumnoD.buscarAlumno(rs.getInt("id_alumno"));
                 cursada.setAlumno(a);
                 
-                Materia m=matData.buscarMateria(rs.getInt("id_materia"));
+                Materia m=materiaD.buscarMateria(rs.getInt("id_materia"));
                 cursada.setMateria(m);
-                cursada.setNota(rs.getDouble("nota"));
+                
                 lista.add(cursada);
             }
             ps.close();
@@ -186,7 +189,7 @@ public class InscripcionData {
             ps.setInt(3, id_materia);
             if (ps.executeUpdate() == 1) {
                 JOptionPane.showMessageDialog(null,"La nota del alumno ha sido actualizada correctamente.");
-                
+  
             } else {
                 JOptionPane.showMessageDialog(null,"La nota del alumno ha podido ser actualizada correctamente.");
                 
@@ -194,7 +197,6 @@ public class InscripcionData {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al actualizar la nota de un alumno: ");
-          
         }
     }
     
