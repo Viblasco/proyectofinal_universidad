@@ -7,10 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author alejo
- */
+
 public class Conexion {
     private static String url="jdbc:mysql://localhost/universidad_grupo2";
     private static String usuario="root";
