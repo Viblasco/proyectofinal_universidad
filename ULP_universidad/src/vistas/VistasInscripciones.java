@@ -101,8 +101,9 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
         jAnular = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 102));
-        setMaximumSize(new java.awt.Dimension(600, 600));
+        setMaximumSize(new java.awt.Dimension(800, 800));
         setPreferredSize(new java.awt.Dimension(450, 450));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSalir.setBackground(new java.awt.Color(0, 102, 102));
         jSalir.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -113,24 +114,29 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
                 jSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(jSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 372, 86, -1));
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Formulario de inscripción");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 0, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("ALUMNO");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 58, -1, -1));
 
         cBAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBAlumnosActionPerformed(evt);
             }
         });
+        getContentPane().add(cBAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 52, 176, 32));
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("LISTADO DE MATERIAS");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 108, -1, -1));
 
         jInscriptos.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jInscriptos.setForeground(new java.awt.Color(0, 102, 102));
@@ -140,6 +146,7 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
                 jInscriptosActionPerformed(evt);
             }
         });
+        getContentPane().add(jInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 144, -1, -1));
 
         jNoInscriptas.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jNoInscriptas.setForeground(new java.awt.Color(0, 102, 102));
@@ -149,6 +156,7 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
                 jNoInscriptasActionPerformed(evt);
             }
         });
+        getContentPane().add(jNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 144, -1, -1));
 
         jTablaMaterias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
         jTablaMaterias.setModel(new javax.swing.table.DefaultTableModel(
@@ -164,6 +172,8 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTablaMaterias);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, 404, 153));
+
         jInscribir.setBackground(new java.awt.Color(0, 102, 102));
         jInscribir.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jInscribir.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,6 +183,7 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
                 jInscribirActionPerformed(evt);
             }
         });
+        getContentPane().add(jInscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 372, -1, -1));
 
         jAnular.setBackground(new java.awt.Color(0, 102, 102));
         jAnular.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -183,68 +194,7 @@ public class VistasInscripciones extends javax.swing.JInternalFrame {
                 jAnularActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(225, 225, 225)
-                                .addComponent(cBAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jInscriptos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jNoInscriptas)
-                                .addGap(33, 33, 33))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jInscribir)
-                                .addGap(65, 65, 65)
-                                .addComponent(jAnular)
-                                .addGap(69, 69, 69)
-                                .addComponent(jSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jLabel3)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cBAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jInscriptos)
-                    .addComponent(jNoInscriptas))
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jInscribir)
-                    .addComponent(jAnular)
-                    .addComponent(jSalir))
-                .addGap(38, 38, 38))
-        );
+        getContentPane().add(jAnular, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 372, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
